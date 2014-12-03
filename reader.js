@@ -16,10 +16,10 @@ function Reader(filename) {
   this.filename = filename;
 
   // raw string interpretation of the filename
-  this._file = fs.readFileSync(filename) + "";
+  file = fs.readFileSync(filename) + "";
   // index that we're currently reading
-  this._index = 0;
-  this._line = 1;
+  index = 0;
+  line = 1;
 
   /**
    * Skips over whitespace in a function
@@ -28,11 +28,11 @@ function Reader(filename) {
    * @return undefined
    */
   this.skipWhiteSpace = function() {
-    ch = this._file.charAt(this._index)
+    ch = file.charAt(index)
     while(ch == " " || ch == "\t" || ch == "\n") {
-      this._index++;
-      if(ch == "\n") { this._line++; }
-      ch = this._file.charAt(this._index);
+      index++;
+      if(ch == "\n") { line++; }
+      ch = file.charAt(index);
     }
   };
 
@@ -42,9 +42,9 @@ function Reader(filename) {
    * @return {String} the next character in the file
    */
   this.read = function() {
-    var ch = this._file.charAt(this._index);
-    this._index++;
-    if(ch == "\n") { this._line++; }
+    var ch = file.charAt(index);
+    index++;
+    if(ch == "\n") { line++; }
     return ch;
   };
 
@@ -54,7 +54,7 @@ function Reader(filename) {
    * @method pushBack
    */
   this.pushBack = function(ch) {
-    this._index--;
+    index--;
   };
 
   /**
@@ -63,7 +63,7 @@ function Reader(filename) {
    * @return {Number} the line number the reader was last on
    */
   this.getLine = function() {
-    return this._line;
+    return line;
   };
 }
 
