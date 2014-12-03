@@ -1,0 +1,9 @@
+{ 
+  "name" : "Dissat",
+  "version" : "0.0.1",
+  "description" : "A not quite satisfactory programming language",
+  "dependencies" : {
+    "mocha" : "~2.0.0",
+    "should" : "~4.0"
+  }
+}

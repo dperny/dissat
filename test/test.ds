@@ -1,0 +1,21 @@
+main = function() do
+
+  variable = 10;
+
+  table = { 1 : 11, 2 : 15 };
+  table[1] = "apple";
+  table[square] = function(x) do x * x end
+
+  table[answer] = if table[square](variable) < 100 then 
+    "too small!"
+  else if table[square](variable) > 100 then
+    "too big!"
+  else
+    "just right"
+  end;
+
+  print(table[answer]);
+    
+end
+
+main()

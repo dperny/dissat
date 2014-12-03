@@ -1,0 +1,93 @@
+#
+# Basic organizational structures of the language
+# 
+       program : statementList EOF
+
+ statementList : statement statementList
+               | expression NEWLINE
+
+         block : DO statementList END
+
+     statement : expression SEMI
+               | variable EQ expression SEMI
+               | while
+               
+  # expressions always return a value
+
+    expression : if
+               | primary operator expression
+               | primary
+               | functDef
+               | tableDef
+               | OPAREN expression CPAREN
+
+#
+# Atoms - variables, values, and literals
+#
+       primary : literal
+               | funcCall
+               | variable
+
+      variable : NAME optTableIndex
+
+       literal : NUMBER
+               | string
+
+        string : QUOTE characters QUOTE
+
+    characters : CHARACTER characters
+               | *none*
+
+      operator : PLUS
+               | MINUS
+               | TIMES
+               | DIVIDE
+               | MODULUS
+               | LESSTHAN
+               | GREATERTHAN
+               | LESSTHANOREQ
+               | GREATERTHANOREQ
+               | EEQ
+
+#
+# Table stuff. Tables are associative arrays, more or less
+# 
+      tableDef : OBRAK fieldsList CBRAK
+
+    fieldsList : expression COLON expression COMMA fieldList
+               | expression COLON expression
+
+ optTableIndex : *none*
+               | tableIndex
+
+    tableIndex : OSQBRAK expression CSQBRAK optTableIndex
+
+
+#
+# functions and function accessories
+#
+
+       funcDef : FUNCTION OPAREN paramList CPAREN block
+
+     paramList : *none*
+               | NAME
+               | NAME COMMA paramList
+
+      funcCall : variable OPAREN argList CPAREN
+
+       argList : *none*
+               | expression
+               | expression COMMA argList
+
+#
+# Conditionals, looping
+#
+      # if must have an else because as an expression, it returns a value,
+      # and if it had no ELSE it wouldn't reliably return a value
+
+            if : IF expression THEN statementList else
+
+          else : ELSE statementlist END
+               | ELSE if
+
+         while : WHILE expression DO statementList END
