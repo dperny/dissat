@@ -8,7 +8,7 @@ main = function() do
 
   table[answer] = if table[square](variable) < 100 then 
     "too small!"
-  else if table[square](variable) > 100 then
+  else if table[square](variable) >= 101 then
     "too big!"
   else
     "just right"

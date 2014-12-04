@@ -37,7 +37,7 @@ function Reader(filename) {
   };
 
   /**
-   * Reads the next character from the file
+   * Reads the next character from the file, advancing through the file
    * @method read
    * @return {String} the next character in the file
    */
@@ -47,6 +47,15 @@ function Reader(filename) {
     if(ch == "\n") { line++; }
     return ch;
   };
+
+  /**
+   * Reads and returns the next character without advancing the file
+   * @method peak
+   * @return {String} the next character in the file
+   */
+  this.peak = function() {
+    return file.charAt(index);
+  }
 
   /**
    * Pushes the reader back one character so that the next call to "read"

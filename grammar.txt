@@ -31,12 +31,7 @@
       variable : NAME optTableIndex
 
        literal : NUMBER
-               | string
-
-        string : QUOTE characters QUOTE
-
-    characters : CHARACTER characters
-               | *none*
+               | STRING
 
       operator : PLUS
                | MINUS
