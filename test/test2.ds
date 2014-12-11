@@ -1,0 +1,10 @@
+main = function() do
+  variable = 10;
+
+  variable2[1] = 2;
+  table = { 1 : 11, 2 : 15 };
+  table[square] = function(x) do x * x; end;
+  
+end;
+
+call main();

@@ -1,33 +1,29 @@
 #
 # Basic organizational structures of the language
 # 
-       program : statementList EOF
+       program : expressionList EOF
 
- statementList : statement statementList
-               | expression NEWLINE
+expressionList : *none*
+               | expression SEMI expressionList
 
-         block : DO statementList END
+         block : DO expressionList END
 
-     statement : expression SEMI
-               | variable EQ expression SEMI
-               | while
-               
   # expressions always return a value
 
-    expression : if
-               | primary operator expression
-               | primary
+    expression : variable ASSIGN expression
+               | variable operator expression
+               | variable
+               | literal operator expression
+               | literal
+               | funcCall
                | functDef
                | tableDef
-               | OPAREN expression CPAREN
+               | if
+               | while
 
 #
 # Atoms - variables, values, and literals
 #
-       primary : literal
-               | funcCall
-               | variable
-
       variable : NAME optTableIndex
 
        literal : NUMBER
@@ -80,9 +76,9 @@
       # if must have an else because as an expression, it returns a value,
       # and if it had no ELSE it wouldn't reliably return a value
 
-            if : IF expression THEN statementList else
+            if : IF expression THEN expressionList else
 
-          else : ELSE statementlist END
+          else : ELSE expressionlist END
                | ELSE if
 
-         while : WHILE expression DO statementList END
+         while : WHILE expression block

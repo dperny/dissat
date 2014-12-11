@@ -3,7 +3,7 @@
   "version" : "0.0.1",
   "description" : "A not quite satisfactory programming language",
   "dependencies" : {
-    "mocha" : "~2.0.0",
-    "should" : "~4.0"
+    "jslint" : "~0.6.6",
+    "uuid"   : "~2.0.1"
   }
 }

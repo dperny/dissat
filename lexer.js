@@ -38,7 +38,8 @@ var keywords = {
   "else"     : "ELSE",
   "while"    : "WHILE",
   "do"       : "DO",
-  "end"      : "END"
+  "end"      : "END",
+  "call"     : "CALL"
 };
 
 function Lexer(filename) { 
@@ -80,6 +81,13 @@ function Lexer(filename) {
     } else {
       return new Lexeme("NAME", word);
     }
+  }
+
+  /**
+   * Returns the line number that the lexer is currently on
+   */
+  this.line = function() {
+    return reader.getLine();
   }
 
   /**

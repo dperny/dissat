@@ -55,7 +55,7 @@ function Reader(filename) {
    */
   this.peak = function() {
     return file.charAt(index);
-  }
+  };
 
   /**
    * Pushes the reader back one character so that the next call to "read"
@@ -63,6 +63,9 @@ function Reader(filename) {
    * @method pushBack
    */
   this.pushBack = function(ch) {
+    if(file.charAt(index) == "\n") {
+      line--;
+    }
     index--;
   };
 

@@ -1,21 +1,24 @@
-main = function() do
+main = function(i,j) do
 
   variable = 10;
 
   table = { 1 : 11, 2 : 15 };
-  table[1] = "apple";
-  table[square] = function(x) do x * x end
 
-  table[answer] = if table[square](variable) < 100 then 
-    "too small!"
-  else if table[square](variable) >= 101 then
-    "too big!"
+  f = function() do "l"; end;
+
+  table[square] = function(x) do x * x; end;
+
+  table[1] = "apple";
+  table[answer] = if call table[square](variable) < 100 then 
+    "too small!";
+  else if call table[square](variable) >= 101 then
+    "too big!";
   else
-    "just right"
+    "just right";
   end;
 
-  print(table[answer]);
-    
-end
+  call print(table[answer]);
+end;
 
-main()
+
+call main(1,2);

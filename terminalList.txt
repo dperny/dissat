@@ -1,0 +1,20 @@
+# these lexemes have a value
+NAME
+NUMBER
+STRING
+
+# these lexemes are keywords
+function
+if
+then
+else
+while
+do
+end
+
+# these lexemes are operators and punctuation
+" , : ;
+() {} []
++ - * / % < > <= >= ==
+
+EOF
